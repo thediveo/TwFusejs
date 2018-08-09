@@ -1,6 +1,16 @@
 {
   "tiddlers": [
     { "file": "../../../node_modules/tw5-thirdflow/editions/release/output/thirdflow.tid",
-      "isTiddlerFile": "true" }
+      "isTiddlerFile": "true" },
+    { "file": "../../../node_modules/fuse.js/dist/fuse.js",
+      "isTiddlerFile": "false",
+      "fields": {
+        "title": "$:/plugins/TheDiveO/TwFusejs/libraries/fuse.js",
+        "type": "application/javascript",
+        "module-type": "library",
+        "created": "20180802114846490",
+        "creator": "TheDiveO",
+        "modified": "20180802114846490" },
+      "prefix": "/* automatically included from npm package `fuse.js` */\r\n" }
   ]
 }
