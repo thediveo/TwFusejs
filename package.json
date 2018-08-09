@@ -4,7 +4,7 @@
   "author": "TheDiveO <thediveo@gmx.eu>",
   "description": "Fuse.js plugin for TiddlyWiki5",
   "homepage": "https://github.com/TheDiveO/TwFusejs",
-  "license": "(MIT OR Apache-2.0)",
+  "license": "(MIT OR CC-BY-3.0 OR Apache-2.0)",
   "bugs": "https://github.com/TheDiveO/TwFusejs/issues",
   "keywords": [
     "tiddlywiki",
