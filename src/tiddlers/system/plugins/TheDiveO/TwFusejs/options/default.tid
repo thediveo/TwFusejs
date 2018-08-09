@@ -1,0 +1,14 @@
+created: 20180809170111776
+modified: 20180809172745746
+tags: 
+title: $:/plugins/TheDiveO/TwFusejs/options/default
+type: application/json
+
+{
+	"minMatchCharLength": 3,
+	"keys": [
+    	"fields.title",
+        "fields.text"
+    ],
+    "id": "fields.title"
+}

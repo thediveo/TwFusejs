@@ -1,0 +1,9 @@
+created: 20180809172116576
+modified: 20180809173201987
+tags: 
+title: test
+type: text/vnd.tiddlywiki
+
+<$list filter="[!is[system]fuse[fuze]]">
+<li><<currentTiddler>></li>
+</$list>
