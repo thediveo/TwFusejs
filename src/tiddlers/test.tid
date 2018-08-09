@@ -1,11 +1,14 @@
 created: 20180809172116576
-modified: 20180809174200511
+modified: 20180809175626030
 tags: 
 title: test
 type: text/vnd.tiddlywiki
 
-<$list filter="[!is[system]fuse[fuze]]">
+search in tiddlers for: <$edit-text tiddler="$:/temp/fuse-search" default="" tag="input"/>
+
+results:
+<ul>
+<$list filter="[!is[system]fuse{$:/temp/fuse-search}]">
 <li><<currentTiddler>></li>
 </$list>
-
-<$list filter="[fuse:noopt[furze]]"/>
+</ul>
