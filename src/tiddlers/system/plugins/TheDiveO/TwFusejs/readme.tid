@@ -1,0 +1,7 @@
+created: 20180809162835521
+modified: 20180809163149720
+tags: 
+title: $:/plugins/TheDiveO/TwFusejs/readme
+type: text/vnd.tiddlywiki
+
+This plugins provides a lightweight fuzzy-search, powered by [[Fuse.js|http://fusejs.io/]].

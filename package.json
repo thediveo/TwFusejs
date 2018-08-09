@@ -1,32 +1,37 @@
 {
-  "name": "twpluginskeleton",
-  "version": "0.0.3",
-  "author": "You",
-  "description": "TiddlyWiki Plugin Skeleton",
-  "homepage": "...",
-  "license": "...",
-  "bugs": "...",
+  "name": "tw5-fusejs",
+  "version": "0.0.1-develop",
+  "author": "TheDiveO <thediveo@gmx.eu>",
+  "description": "Fuse.js plugin for TiddlyWiki5",
+  "homepage": "https://github.com/TheDiveO/TwFusejs",
+  "license": "(MIT OR Apache-2.0)",
+  "bugs": "https://github.com/TheDiveO/TwFusejs/issues",
   "keywords": [
     "tiddlywiki",
     "tiddlywiki5",
     "wiki",
     "plugin",
-    "ThirdFlow"
+    "Fuse.js"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheDiveO/TwFusejs"
+  },
   "main": "main.js",
   "scripts": {
-    "start": "tiddlywiki editions/develop --verbose --server 8080 $:/core/save/all text/plain text/html & echo $! > tw.pid",
-    "stop": "kill `cat tw.pid` && rm tw.pid",
+    "start": "tiddlywiki editions/develop --verbose --server 8080 $:/core/save/all text/plain text/html & echo $! > twfusejs.pid",
+    "stop": "kill `cat twfusejs.pid` && rm twfusejs.pid",
     "develop": "tiddlywiki editions/develop --verbose --server 8080 $:/core/save/all text/plain text/html",
     "release": "tiddlywiki editions/release --verbose --build release"
   },
   "dependencies": {
-    "tiddlywiki": ">=5.1.11",
+    "fuse.js": "^3.2.1",
+    "tiddlywiki": ">=5.1.16",
     "tw5-thirdflow": ">=1.2.0"
   },
   "devDependencies": {},
   "bundleDependencies": [],
   "engines": {
-    "node": ">=0.8.2"
+    "node": ">=4.6.0"
   }
 }
