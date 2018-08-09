@@ -1,5 +1,5 @@
 created: 20180809172116576
-modified: 20180809173201987
+modified: 20180809174200511
 tags: 
 title: test
 type: text/vnd.tiddlywiki
@@ -7,3 +7,5 @@ type: text/vnd.tiddlywiki
 <$list filter="[!is[system]fuse[fuze]]">
 <li><<currentTiddler>></li>
 </$list>
+
+<$list filter="[fuse:noopt[furze]]"/>
