@@ -1,5 +1,9 @@
 created: 20180809163302254
-modified: 20180809163303358
+modified: 20180810170138931
 title: TwFusejs
 type: text/vnd.tiddlywiki
 
+{{$:/plugins/TheDiveO/TwFusejs/icon}}
+The ''~TwFusejs'' plugin brings fuzzy searching to your ~TiddlyWikis, powered by Fuse.js.
+
+This is the ''~TwFusejs'' plugin version "<$view tiddler="$:/plugins/TheDiveO/TwFusejs" field="version" />" (<$list filter="[[$:/plugins/TheDiveO/TwFusejs/readme]is[shadow]]" emptyMessage="<span style='color: #c00; font-weight: bold'>development</span>">release</$list> wiki).
