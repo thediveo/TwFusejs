@@ -1,10 +1,58 @@
 created: 20180811153842731
-modified: 20180811154525411
+modified: 20180811161031602
 tags: 
 title: Fuse Search Options
 type: text/vnd.tiddlywiki
 
+!! Fuse Search Options
+
 The `fuse[...]` search filter operator can be tuned by specifying search options in a JSON data tiddler, we'll explain this in detail a few moments. The default search options for `fuse[...]` are to be found in this plugin's [[options/default|$:/plugins/TheDiveO/TwFusejs/options/default]] tiddler.
+
+!! Specifying Search Options
 
 In order to use your own tuned set of options, simply create a [[JSON data tiddler|https://tiddlywiki.com/#JSONTiddlers]] (say, `myfuseoptions`) and then specify its title as the `fuse` filter suffix: `fuse:myfuseoptions[...]`.
 
+!! Search Options JSON Data Tiddlers
+
+An example fuse options JSON data tiddler might look like this (the [[default search options|$:/plugins/TheDiveO/TwFusejs/options/default]]):
+{{$:/plugins/TheDiveO/TwFusejs/options/default}}
+
+> ''NOTE:'' It's a good idea to set the ''content type'' of a search options tiddler to `application/json`. While not strictly necessary, it tells ~TiddlyWiki to pretty-print the JSON data structure.
+
+!! Important Options
+
+!!! List of Matching Tiddler Titles
+
+In most cases you'll probably want a `fuse[...]` search to return a list of matching tiddler titles. For this, you need to include and specify the `id` option as follows:
+
+```json
+{
+	"id": "fields.title"
+}
+```
+
+Of course, you can override the `id` setting to return a different tiddler field, such as `fields.caption` or whatever you may find useful.
+
+!!! Tiddler Fields to Include in Search
+
+You can basically search whichever tiddler fields you desire, but you need to tell the `fuse[...]` operator which ones you want. For instance, this searches both the titles and text contents of tiddlers:
+
+```json
+{
+	"keys": [ "fields.title", "fields.text" ]
+}
+```
+
+Unfortunately, such "unweighted" searches tend to prioritize fuzzy title matches over (almost) precise content matches, when used with the option `"shouldSort": true`. So you might want to tune your searches further by weighting matches differently in different tiddler fields:
+
+```json
+{
+	"keys": [
+    	{ "name": "fields.title", "weight": 0.2 },
+        { "name": "fields.text", "weight": 0.8 }
+}
+```
+
+!! Further Information
+
+A commented list of Fuse.js search options can be found in the [[source code of Fuse.js|https://github.com/krisk/Fuse/blob/master/src/index.js]] on ~GitHub.

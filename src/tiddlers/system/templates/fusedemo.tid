@@ -1,0 +1,17 @@
+created: 20180811164218475
+modified: 20180811165726073
+tags: 
+title: $:/templates/fusedemo
+type: text/vnd.tiddlywiki
+
+\define ff() [!is[system]$(fuse-filter)$]
+<!-- set variable fuse-filter before transcluding -->
+<!-- please note that we search only for non-system tiddlers for performance reasons -->
+
+<code>&lt;$list filter="[<<fuse-filter>>]"/&gt;</code> yields:
+
+<div class="result">
+<$list filter=<<ff>> >
+<$view tiddler=<<currentTiddler>> field="title"/>, 
+</$list>
+</div>

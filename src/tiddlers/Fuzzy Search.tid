@@ -1,25 +1,11 @@
 created: 20180809172116576
-modified: 20180811150958014
+modified: 20180811163928518
 tags: 
 title: Fuzzy Search
 type: text/vnd.tiddlywiki
 
 search in tiddlers for: <$edit-text tiddler="$:/temp/fuse-search" default="" tag="input"/>
 
-<$set name="hits" filter="[!is[current]!is[system]fuse{$:/temp/fuse-search}limit[20]]">
-<$count filter="[enlist<hits>]"/> matches
-<dl>
-  <$list variable="hit" filter="[enlist<hits>]">
-    <dt>
-      <!-- render matching titles as tiddler links -->
-      <$link to=<<hit>> ><$view tiddler=<<hit>> field="title"/></$link>:
-    </dt>
-    <dd>
-      <!-- render the (beginning) of a matching tiddler as pure text without any markup -->
-      <$list filter="[<hit>get[text]stringlimit[300]]">
-        <i><$view field="title" format="plainwikified"/></i>
-      </$list>
-    </dd>
-  </$list>
-</dl>
+<$set name="fuse-search" filter="[{$:/temp/fuse-search}]">
+{{$:/plugins/TheDiveO/TwFusejs/templates/fusesearch}}
 </$set>

@@ -1,0 +1,31 @@
+created: 20180811170227516
+modified: 20180811171218539
+tags: 
+title: $:/templates/fusedemolongresults
+type: text/vnd.tiddlywiki
+
+\define ff() [!is[current]!is[system]$(fuse-filter)$limit[20]]
+<!-- set variable fuse-filter before transcluding -->
+<!-- please note that we search only for non-system tiddlers for performance reasons -->
+
+<code>&lt;$list filter="[<<fuse-filter>>]"/&gt;</code> yields the following titles (and we show here also the abbreviated tiddler content):
+
+<div class="result">
+<$set name="hits" filter=<<ff>> > 
+  <$count filter="[enlist<hits>]"/> matches
+  <dl>
+    <$list variable="hit" filter="[enlist<hits>]">
+      <dt>
+        <!-- render matching titles as tiddler links -->
+        <$link to=<<hit>> ><$view tiddler=<<hit>> field="title"/></$link>:
+      </dt>
+      <dd>
+        <!-- render the (beginning) of a matching tiddler as pure text without any markup -->
+        <$list filter="[<hit>get[text]stringlimit[300]]">
+          <i><$view field="title" format="plainwikified"/></i>
+        </$list>
+      </dd>
+    </$list>
+  </dl>
+</$set>
+</div>

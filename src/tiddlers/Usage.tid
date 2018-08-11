@@ -1,6 +1,46 @@
 created: 20180811153535128
-modified: 20180811153753919
+modified: 20180811171947286
 title: Usage
 type: text/vnd.tiddlywiki
 
 Fuse searches are carried out using the `fuse[...]` [[filter operator|https://tiddlywiki.com/#Filter%20Operators]]: given a string as the operand, such as in `fuse[furzzy]` it'll return a list of matching tiddler titles.
+
+!! Simple Search Using Default Plugin Options
+
+Let's start simple and search for something properly spelled; please note that this also returns fuzzy results on purpose:
+
+<$set name="fuse-filter" value="fuse[fuzzy]">
+{{$:/templates/fusedemolongresults}}
+</$set>
+
+Now let's get more fuzzy in our search term:
+
+<$set name="fuse-filter" value="fuse[furrzy]">
+{{$:/templates/fusedemolongresults}}
+</$set>
+
+Please notice how the order (significance) of search results changes. That's because we now have a better match on "furrzy" itself.
+
+!! Search Results Template
+
+Use the [[$:/plugins/TheDiveO/TwFusejs/templates/fusesearch]] template do a Fuse search and then pretty-print the results. First, set the variable `fuse-search` with your search term, and then transcluse the `fusesearch` template. Of course, you can set the search term variable from the tiddler contents/field that is connected to an text edit widget.
+
+```tiddlywiki
+<$set name="fuse-search" value="fuzzy">
+<div class="result">
+{{$:/plugins/TheDiveO/TwFusejs/templates/fusesearch}}
+</div>
+</$set>
+```
+
+This yields:
+
+<$set name="fuse-search" value="TiddlyWiki">
+<div class="result">
+{{$:/plugins/TheDiveO/TwFusejs/templates/fusesearch}}
+</div>
+</$set>
+
+!! Search Options
+
+Please note that you can tune the search using `fuse[...]` [[search options|Fuse Search Options]].

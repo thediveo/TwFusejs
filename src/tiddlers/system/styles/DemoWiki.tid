@@ -1,5 +1,5 @@
 created: 20180811153340623
-modified: 20180811153417846
+modified: 20180811162625060
 tags: $:/tags/Stylesheet
 title: $:/styles/DemoWiki
 type: text/css
@@ -37,4 +37,11 @@ table tr.evenRow td {
 
 table.plain tr.evenRow td {
   background-color: inherit !important;
+}
+
+div.result {
+  background-color: #f5f5ef;
+  border: 1px solid #c3c3a2;
+  border-radius: 0.75ex;
+  padding: 0.5ex 0.3em;
 }
