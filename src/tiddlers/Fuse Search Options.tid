@@ -1,0 +1,10 @@
+created: 20180811153842731
+modified: 20180811154525411
+tags: 
+title: Fuse Search Options
+type: text/vnd.tiddlywiki
+
+The `fuse[...]` search filter operator can be tuned by specifying search options in a JSON data tiddler, we'll explain this in detail a few moments. The default search options for `fuse[...]` are to be found in this plugin's [[options/default|$:/plugins/TheDiveO/TwFusejs/options/default]] tiddler.
+
+In order to use your own tuned set of options, simply create a [[JSON data tiddler|https://tiddlywiki.com/#JSONTiddlers]] (say, `myfuseoptions`) and then specify its title as the `fuse` filter suffix: `fuse:myfuseoptions[...]`.
+

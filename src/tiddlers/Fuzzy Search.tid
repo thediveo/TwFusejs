@@ -1,12 +1,12 @@
 created: 20180809172116576
-modified: 20180811144034161
+modified: 20180811150958014
 tags: 
 title: Fuzzy Search
 type: text/vnd.tiddlywiki
 
 search in tiddlers for: <$edit-text tiddler="$:/temp/fuse-search" default="" tag="input"/>
 
-<$set name="hits" filter="[!is[system]fuse{$:/temp/fuse-search}!is[current]limit[20]]">
+<$set name="hits" filter="[!is[current]!is[system]fuse{$:/temp/fuse-search}limit[20]]">
 <$count filter="[enlist<hits>]"/> matches
 <dl>
   <$list variable="hit" filter="[enlist<hits>]">

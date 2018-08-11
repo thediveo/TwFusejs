@@ -1,0 +1,40 @@
+created: 20180811153340623
+modified: 20180811153417846
+tags: $:/tags/Stylesheet
+title: $:/styles/DemoWiki
+type: text/css
+
+ol.wide li, ul.wide li {
+  margin-top: 1ex;
+}
+
+dl dt code {
+  font-weight: normal;
+}
+
+table.borderless, table.borderless td, table.borderless th {
+  border: 0px solid #000 !important;
+}
+
+img.imagethumb {
+  float: right;
+  border: 1px solid #ccc;
+  margin-left: 1em;
+}
+
+div.body img {
+  border: 1px solid #ccc;
+  margin-left: 1em;
+}
+
+table th {
+  background-color: #d8d8d8;
+}
+
+table tr.evenRow td {
+  background-color: #f8f8f8;
+}
+
+table.plain tr.evenRow td {
+  background-color: inherit !important;
+}

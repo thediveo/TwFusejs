@@ -1,0 +1,6 @@
+created: 20180811153535128
+modified: 20180811153753919
+title: Usage
+type: text/vnd.tiddlywiki
+
+Fuse searches are carried out using the `fuse[...]` [[filter operator|https://tiddlywiki.com/#Filter%20Operators]]: given a string as the operand, such as in `fuse[furzzy]` it'll return a list of matching tiddler titles.
