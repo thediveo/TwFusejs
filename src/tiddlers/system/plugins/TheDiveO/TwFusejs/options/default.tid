@@ -1,11 +1,12 @@
 created: 20180809170111776
-modified: 20180811133116768
+modified: 20180811144325764
 tags: 
 title: $:/plugins/TheDiveO/TwFusejs/options/default
 type: application/json
 
 {
 	"tokenize": true,
+    "shouldSort": true,
 	"minMatchCharLength": 3,
 	"keys": [
     	"fields.title",

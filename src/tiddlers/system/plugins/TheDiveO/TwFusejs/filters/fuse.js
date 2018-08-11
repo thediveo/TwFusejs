@@ -12,7 +12,13 @@ module-type: filteroperator
 /*global $tw: false */
 "use strict";
 
-var Fuse = require("$:/plugins/TheDiveO/TwFusejs/libraries/fuse");
+// Locate the plugin title, so we can later easily access our plugin tiddlers
+// without having to repeat the plugin title root/stem over and over again.
+// Thanks to the CommonJS definitions, we have access to this tiddlers title
+// as the module id(entifier).
+var PLUGIN = module.id.split("/").slice(0, 4).join("/");
+
+var Fuse = require(PLUGIN + "/libraries/fuse");
 
 /* The "fuse" filter operator, powered by Fuse.js.
  *
@@ -41,7 +47,7 @@ exports.fuse = function(source, operator, options) {
 	source(function(tiddler, title) {
     tiddlers.push(tiddler);
 	});
-	var optionsTitle = operator.suffix || "$:/plugins/TheDiveO/TwFusejs/options/default";
+	var optionsTitle = operator.suffix || (PLUGIN + "/options/default");
 	var optionsTiddler = options.wiki.getTiddler(optionsTitle);
 	var options;
 	try {
