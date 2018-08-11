@@ -1,5 +1,5 @@
 created: 20180809170111776
-modified: 20180811151800913
+modified: 20180811172516723
 tags: 
 title: $:/plugins/TheDiveO/TwFusejs/options/default
 type: application/json
@@ -8,6 +8,7 @@ type: application/json
 	"tokenize": true,
     "shouldSort": true,
 	"minMatchCharLength": 3,
+    "threshold": 0.5,
     "distance": 1000,
 	"keys": [
     	{ "name": "fields.title", "weight": 0.2 },
