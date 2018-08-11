@@ -2,6 +2,8 @@
   "tiddlers": [
     { "file": "../../../node_modules/tw5-thirdflow/editions/release/output/thirdflow.tid",
       "isTiddlerFile": "true" },
+      { "file": "../../../node_modules/tw5-fontawesome/editions/release/output/fontawesome.tid",
+        "isTiddlerFile": "true" },
     { "file": "../../../node_modules/fuse.js/dist/fuse.js",
       "isTiddlerFile": "false",
       "fields": {

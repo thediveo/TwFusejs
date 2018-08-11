@@ -27,6 +27,7 @@
   "dependencies": {
     "fuse.js": "^3.2.1",
     "tiddlywiki": ">=5.1.16",
+    "tw5-fontawesome": ">=1.2.10",
     "tw5-thirdflow": ">=1.2.0"
   },
   "devDependencies": {},
