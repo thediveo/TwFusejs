@@ -35,7 +35,7 @@ var Fuse = require("$:/plugins/TheDiveO/TwFusejs/libraries/fuse");
  * depending on your needs.
  */
 exports.fuse = function(source, operator, options) {
-	console.log("searching for:", operator.operand);
+	console.log("searching for:", "'"+operator.operand+"'");
 
 	var tiddlers = [];
 	source(function(tiddler, title) {
@@ -53,9 +53,7 @@ exports.fuse = function(source, operator, options) {
 
 	var fuse = new Fuse(tiddlers, options);
 
-	console.log("options:", options);
 	var result = fuse.search(operator.operand, options);
-	console.log("results:", result);
 	return result;
 };
 
