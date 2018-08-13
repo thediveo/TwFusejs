@@ -6,7 +6,7 @@ Brings fuzzy searching to TiddlyWiki 5, powered by [Fuse.js](http://fusejs.io). 
 
 Coming soon.
 
-## Development
+## Create Release Files
 
 Clone the TwFusejs repository on GitHub, then install the required Nodejs modules, and finally create the release files:
 

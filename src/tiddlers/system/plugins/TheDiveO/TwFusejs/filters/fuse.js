@@ -12,13 +12,20 @@ module-type: filteroperator
 /*global $tw: false */
 "use strict";
 
+// If present, then maps "fuse:xxx[...]" filter suffixes to JSON data tiddlers
+// containing Fuse.js options.
+var FUSE_TRAMPOLINE = "$:/config/fuse-trampoline";
+
+// Plugin-relative path to default options JSON data tiddler.
+var FUSE_OPTS_DEFAULT = "/options/default";
+
 // Locate the plugin title, so we can later easily access our plugin tiddlers
 // without having to repeat the plugin title root/stem over and over again.
 // Thanks to the CommonJS definitions, we have access to this tiddlers title
 // as the module id(entifier).
 var PLUGIN = module.id.split("/").slice(0, 4).join("/");
 
-var Fuse = require(PLUGIN + "/libraries/fuse");
+var Fuse = require(PLUGIN + "/libs/fuse.js");
 
 /* The "fuse" filter operator, powered by Fuse.js.
  *
@@ -69,7 +76,7 @@ exports.fuse = function(source, operator, options) {
 	// which the user can specify as the filter operator suffix. If left
 	// blank, then this defaults to the "default" search options JSON
 	// data tiddler included in this plugin.
-	var optionsTitle = operator.suffix || (PLUGIN + "/options/default");
+	var optionsTitle = operator.suffix || (PLUGIN + FUSE_OPTS_DEFAULT);
 	var optionsTiddler = options.wiki.getTiddler(optionsTitle);
 	var options;
 	try {
@@ -79,6 +86,27 @@ exports.fuse = function(source, operator, options) {
 		// in case we cannot properly parse the options JSON data tiddler.
 		console.log("invalid fuse options JSON tiddler:", optionsTitle);
 		return ["invalid fuse options JSON tiddler: " + optionsTitle];
+	}
+
+	// Handle options element "getFn" especially: Fuse.js expect it to
+	// contain a function object. If it contains a string instead, then
+	// we interpret it to be a module export, so we try to locate the
+	// exported function.
+	if (options.getFn && typeof options.getFn === 'string') {
+		try {
+			// First try to resolve the given module tiddler title; if that fails,
+			// then try again with ".js" appended to the title.
+			try {
+				var module = require(options.getFn);
+			} catch (e) {
+				var module = require(options.getFn + ".js");
+			}
+			options.getFn = module.getFn;
+		} catch (e) {
+			console.warn("cannot resolve getFn:", options.getFn);
+			delete options.getFn;
+		}
+		//options.getFn = m
 	}
 
 	// Search!

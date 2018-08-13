@@ -1,5 +1,5 @@
 created: 20180809170111776
-modified: 20180811172516723
+modified: 20180813174408958
 tags: 
 title: $:/plugins/TheDiveO/TwFusejs/options/default
 type: application/json
@@ -11,8 +11,9 @@ type: application/json
     "threshold": 0.5,
     "distance": 1000,
 	"keys": [
-    	{ "name": "fields.title", "weight": 0.2 },
-        { "name": "fields.text", "weight": 0.8 }
+    	{ "name": "fields.title", "weight": 0.1 },
+        { "name": "fields.text", "weight": 0.45 },
+        { "name": "fields.tags", "weight": 0.45 }
     ],
     "id": "fields.title"
 }
