@@ -1,5 +1,5 @@
 created: 20180811161220722
-modified: 20180815212257268
+modified: 20180815212652117
 tags: 
 title: $:/plugins/TheDiveO/TwFusejs/templates/fusesearch
 type: text/vnd.tiddlywiki
@@ -8,23 +8,21 @@ type: text/vnd.tiddlywiki
 <!-- Optionally set the variable "fuse-options" to either a JSON data string with options,
      or to the title of a JSON data tiddler specifying the search options -->
 <$set name="fuse-options" value=<<fuse-options>> emptyValue={{$:/plugins/TheDiveO/TwFusejs/options/default!!text}} >
-  <$list filter="[<fuse-search>minlength[1]]">
-    <$set name="hits" filter="[!is[current]!is[system]fuse:fuse-options<fuse-search>limit[20]]">
-      <$count filter="[enlist<hits>]"/> matches
-      <dl>
-        <$list variable="hit" filter="[enlist<hits>]">
-          <dt>
-            <!-- render matching titles as tiddler links -->
-            <$link to=<<hit>> ><$view tiddler=<<hit>> field="title"/></$link>:
-          </dt>
-          <dd>
-            <!-- render the (beginning) of a matching tiddler as pure text without any markup -->
-            <$list filter="[<hit>get[text]stringlimit[300]]">
-              <i><$view field="title" format="plainwikified"/></i>
-            </$list>
-          </dd>
-        </$list>
-      </dl>
-    </$set>
-  </$list>
+  <$set name="hits" filter="[!is[current]!is[system]fuse:fuse-options<fuse-search>limit[20]]">
+    <$count filter="[enlist<hits>]"/> matches
+    <dl>
+      <$list variable="hit" filter="[enlist<hits>]">
+        <dt>
+          <!-- render matching titles as tiddler links -->
+          <$link to=<<hit>> ><$view tiddler=<<hit>> field="title"/></$link>:
+        </dt>
+        <dd>
+          <!-- render the (beginning) of a matching tiddler as pure text without any markup -->
+          <$list filter="[<hit>get[text]stringlimit[300]]">
+            <i><$view field="title" format="plainwikified"/></i>
+          </$list>
+        </dd>
+      </$list>
+    </dl>
+  </$set>
 </$set>
