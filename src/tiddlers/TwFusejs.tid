@@ -1,5 +1,5 @@
 created: 20180809163302254
-modified: 20180815161427210
+modified: 20180815211948226
 title: TwFusejs
 type: text/vnd.tiddlywiki
 
@@ -9,7 +9,7 @@ type: text/vnd.tiddlywiki
 * [[Fuzzy Search]] showcase.
 * [[Usage]] examples.
 
-!! The `fuse` filter operator
+!! At a Glance: `fuse` Fuzzy Search Filter Operator
 
 |!purpose |filter the input by fuzzily searching tiddler content|
 |!input |a [[selection of titles|https://tiddlywiki.com/#Title%20Selection]] |
