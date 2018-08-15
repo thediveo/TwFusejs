@@ -137,26 +137,29 @@ exports.fuse = function(source, operator, options) {
 		try {
 			// First try to resolve the given module tiddler title; if that fails,
 			// then try again with ".js" appended to the title.
+			var module;
 			try {
-				var module = require(fuse_options.getFn);
+				module = require(fuse_options.getFn);
 			} catch (e) {
 				if ($tw.utils.strEndsWith(fuse_options.getFn, ".js")) {
 					throw e;
 				}
-				var module = require(fuse_options.getFn + ".js");
+				module = require(fuse_options.getFn + ".js");
 			}
 			fuse_options.getFn = module.getFn;
 		} catch (e) {
 			console.warn("cannot resolve getFn:", fuse_options.getFn);
 			delete fuse_options.getFn;
 		}
+	} else {
 		delete fuse_options.getFn;
 	}
 
 	// Ready to search!
+	// console.log("Fuse.js search for:", "'"+operator.operand.trim()+"'");
 	// console.log("Fuse.js options:", fuse_options);
 	var fuse = new Fuse(tiddlers, fuse_options);
-	var hits = fuse.search(operator.operand);
+	var hits = fuse.search(operator.operand.trim());
 
 	// In case the fuse options cause hit objects instead of simple hit
 	// strings to be returned, then only return the (hit) item; this should

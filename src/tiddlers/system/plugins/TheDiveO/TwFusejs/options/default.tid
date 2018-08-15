@@ -1,5 +1,5 @@
 created: 20180809170111776
-modified: 20180813174408958
+modified: 20180815183550529
 tags: 
 title: $:/plugins/TheDiveO/TwFusejs/options/default
 type: application/json
@@ -10,10 +10,7 @@ type: application/json
 	"minMatchCharLength": 3,
     "threshold": 0.5,
     "distance": 1000,
-	"keys": [
-    	{ "name": "fields.title", "weight": 0.1 },
-        { "name": "fields.text", "weight": 0.45 },
-        { "name": "fields.tags", "weight": 0.45 }
-    ],
-    "id": "fields.title"
+	"keys": [ "fields.text,fields.title,fields.tags" ],
+    "id": "fields.title",
+    "getFn": "$:/plugins/TheDiveO/TwFusejs/getfns/multipath.js"
 }

@@ -1,6 +1,6 @@
 /*\
 created: 20180813165310714
-title: $:/plugins/TheDiveO/TwFusejs/getfns/all.js
+title: $:/plugins/TheDiveO/TwFusejs/getfns/wildcard.js
 type: application/javascript
 modified: 20180813165403648
 tags:

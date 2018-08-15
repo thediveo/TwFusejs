@@ -1,11 +1,11 @@
 created: 20180809172116576
-modified: 20180813161931010
+modified: 20180815190334228
 tags: 
 title: Fuzzy Search
 type: text/vnd.tiddlywiki
 
 search in tiddlers for: <$edit-text tiddler="$:/temp/fuse-search" default="" tag="input"/>
 
-<$set name="fuse-search" filter="[{$:/temp/fuse-search}]">
+<$set name="fuse-search" value={{$:/temp/fuse-search!!text}}>
 {{$:/plugins/TheDiveO/TwFusejs/templates/fusesearch}}
 </$set>
