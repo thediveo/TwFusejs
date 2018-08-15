@@ -12,11 +12,7 @@ module-type: filteroperator
 /*global $tw: false */
 "use strict";
 
-// If present, then maps "fuse:xxx[...]" filter suffixes to JSON data tiddlers
-// containing Fuse.js options.
-var FUSE_TRAMPOLINE = "$:/config/fuse-trampoline";
-
-// Plugin-relative path to default options JSON data tiddler.
+// Plugin-relative path to default Fuse.js options JSON data tiddler.
 var FUSE_OPTS_DEFAULT = "/options/default";
 
 // Locate the plugin title, so we can later easily access our plugin tiddlers
@@ -42,17 +38,21 @@ var Fuse = require(PLUGIN + "/libs/fuse.js");
  *
  * source: a tiddler iterator that represents the results of the previous
  *    filter step. This is the set of tiddlers our fuse search operator will
- *    operate on.
+ *    have to search through.
  * operator: the arguments to the fuse filter operator...
- *    .operator: name of the filter operator: always "fuse".
+ *    .operator: name of the filter operator: always "fuse", so AWFUL.
  *    .operand: the operand as a string: what to search for; text references
  *       and variable names have already been resolved at this point into the
  *       string to be searched for.
- *    .prefix: an optional "!" if the filter is to be negated; this is ignored
- *       for the fuse search operator.
+ *    .prefix: an optional "!" if the filter is to be negated; when the prefix
+ *       is empty, then options.matchAllTokens=True is assumed; if the prefix
+ *       is "!", then options.matchAllTokens=False.
  *    .suffix: an optional string containing an additional filter argument:
- *       if not empty, then the operator suffix specifies the title of a
- *       JSON tiddler specifying the fuse search options to use.
+ *       the name of a (TiddlyWiki) variable either directly specifying the
+ *       Fuse.js options in form of a JSON string, or instead referencing a
+ *       JSON data tiddler by title which then contains the Fuse.js options.
+ *       If left empty/unspecified, then the default TwFusejs plugin options
+ *       will be taken instead, stored in ./options/default inside this plugin.
  * options:
  *    .wiki: wiki object reference.
  *    .widget: an optional widget node object reference.
@@ -72,46 +72,91 @@ exports.fuse = function(source, operator, options) {
     tiddlers.push(tiddler);
 	});
 
-	// Now prepare Fuse.js' options: read them from a JSON data tiddler,
-	// which the user can specify as the filter operator suffix. If left
-	// blank, then this defaults to the "default" search options JSON
-	// data tiddler included in this plugin.
-	var optionsTitle = operator.suffix || (PLUGIN + FUSE_OPTS_DEFAULT);
-	var optionsTiddler = options.wiki.getTiddler(optionsTitle);
-	var options;
-	try {
-		options = JSON.parse(optionsTiddler.fields.text);
-	} catch (e) {
-		// Return an error message instead of a list of matching tiddlers
-		// in case we cannot properly parse the options JSON data tiddler.
-		console.log("invalid fuse options JSON tiddler:", optionsTitle);
-		return ["invalid fuse options JSON tiddler: " + optionsTitle];
+	// Prepare the Fuse.js search options: there are basically three different
+	// sources:
+	// 1. no suffix given: take the default options.
+	// 2. suffix given, contains JSON data resulting in an option object.
+	// 3. suffix given, not JSON, but instead references a JSON data tiddler.
+	var fuse_options;
+	if (!operator.suffix) {
+		// case 1: use the default, Luke!
+		// console.log("using default TwFusejs options");
+		var optionsTitle = PLUGIN + FUSE_OPTS_DEFAULT;
+		try {
+			fuse_options = JSON.parse(options.wiki.getTiddler(optionsTitle).fields.text);
+		} catch (e) {
+			// Return an error message instead of a list of matching tiddlers
+			// in case we cannot properly parse the options JSON data tiddler.
+			var msg = "invalid fuse options JSON tiddler: \"" + optionsTitle + "\"";
+			console.log(msg);
+			return [msg];
+		}
+	} else if (options.widget) {
+		// try case 2: variable contents are JSON.
+		// console.log("using variable:", operator.suffix);
+		try {
+			fuse_options = JSON.parse(options.widget.getVariable(operator.suffix));
+			// console.log("variable JSON contents:", options.widget.getVariable(operator.suffix));
+		} catch (e) {
+			fuse_options = null;
+		}
+		if (!fuse_options || typeof fuse_options === "string") {
+			// Erm, case 2 failed, so this should better be case 3: a title of a
+			// JSON data tiddler.
+			var optionsTitle = fuse_options ?
+						fuse_options : options.widget.getVariable(operator.suffix);
+			// console.log("using JSON tiddler:", optionsTitle);
+			try {
+				fuse_options = JSON.parse(
+					options.wiki.getTiddler(optionsTitle).fields.text);
+			} catch (e) {
+					var msg = "malformed JSON data in tiddler \"" + optionsTitle + "\"";
+					console.log(msg);
+					return [msg];
+			}
+		}
+	} else {
+		// erm: suffix = variable name given, but there is no widget context and
+		// thus no variables...
+		var msg = "missing widget context to look up search options variable";
+		console.log(msg);
+		return [msg];
 	}
+
+	// Handle optional "!" prefix: when no prefix is given, or the prefix
+	// is something other than "!", then we AND all search tokens; otherwise,
+	// we OR them.
+	fuse_options.matchAllTokens = operator.prefix !== "!";
+	// console.log("Find all matches:", fuse_options.matchAllTokens);
 
 	// Handle options element "getFn" especially: Fuse.js expect it to
 	// contain a function object. If it contains a string instead, then
 	// we interpret it to be a module export, so we try to locate the
 	// exported function.
-	if (options.getFn && typeof options.getFn === 'string') {
+	if (fuse_options.getFn && typeof fuse_options.getFn === "string") {
 		try {
 			// First try to resolve the given module tiddler title; if that fails,
 			// then try again with ".js" appended to the title.
 			try {
-				var module = require(options.getFn);
+				var module = require(fuse_options.getFn);
 			} catch (e) {
-				var module = require(options.getFn + ".js");
+				if ($tw.utils.strEndsWith(fuse_options.getFn, ".js")) {
+					throw e;
+				}
+				var module = require(fuse_options.getFn + ".js");
 			}
-			options.getFn = module.getFn;
+			fuse_options.getFn = module.getFn;
 		} catch (e) {
-			console.warn("cannot resolve getFn:", options.getFn);
-			delete options.getFn;
+			console.warn("cannot resolve getFn:", fuse_options.getFn);
+			delete fuse_options.getFn;
 		}
-		//options.getFn = m
+		delete fuse_options.getFn;
 	}
 
-	// Search!
-	var fuse = new Fuse(tiddlers, options);
-	var hits = fuse.search(operator.operand, options);
+	// Ready to search!
+	// console.log("Fuse.js options:", fuse_options);
+	var fuse = new Fuse(tiddlers, fuse_options);
+	var hits = fuse.search(operator.operand);
 
 	// In case the fuse options cause hit objects instead of simple hit
 	// strings to be returned, then only return the (hit) item; this should
