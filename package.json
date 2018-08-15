@@ -21,6 +21,8 @@
   "scripts": {
     "start": "tiddlywiki editions/develop --verbose --server 8080 $:/core/save/all text/plain text/html & echo $! > twfusejs.pid",
     "stop": "kill `cat twfusejs.pid` && rm twfusejs.pid",
+    "winstart": "start \"TwFusejs Develop\" cmd /c tiddlywiki editions/develop --verbose --server 8080 $:/core/save/all text/plain text/html",
+    "winstop": "taskkill /fi \"WINDOWTITLE eq TwFusejs Develop\"",
     "develop": "tiddlywiki editions/develop --verbose --server 8080 $:/core/save/all text/plain text/html",
     "release": "tiddlywiki editions/release --verbose --build release"
   },
