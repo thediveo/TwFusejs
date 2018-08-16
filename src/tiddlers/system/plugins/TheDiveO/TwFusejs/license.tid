@@ -1,10 +1,10 @@
 created: 20180809162835520
-modified: 20180809163027657
+modified: 20180816174341113
 tags: 
 title: $:/plugins/TheDiveO/TwFusejs/license
 type: text/vnd.tiddlywiki
 
 * The included Fuse.js is licensed as [[Apache 2.0|https://github.com/krisk/Fuse/blob/master/LICENSE]].
-* My contributions (by ~TheDiveO) that aren't part of a standard TiddlyWiki 5 distribution itself (as available from the [[TiddlyWiki|http://tiddlywiki.com]] web site) are licensed as:
+* My contributions (by ~TheDiveO) that aren't part of a standard ~TiddlyWiki 5 distribution itself (as available from the [[TiddlyWiki|http://tiddlywiki.com]] web site) are licensed as:
 ** documentation is covered by [[CC BY 3.0|http://creativecommons.org/licenses/by/3.0/]].
-** code (such as ~TiddlyWiki 5 macros, JavaScript, et cetera) and CSS definitions are covered by the [[MIT License|http://opensource.org/licenses/mit-license.html]].
+** code (such as ~TiddlyWiki 5 macros, ~JavaScript, et cetera) and CSS definitions are covered by the [[MIT License|http://opensource.org/licenses/mit-license.html]].

@@ -1,7 +1,7 @@
 created: 20180809162835518
-modified: 20180809163035735
+modified: 20180816174427333
 tags: 
 title: $:/plugins/TheDiveO/TwFusejs/history
 type: text/vnd.tiddlywiki
 
-* ''0.0.1'' -- my first plugin.
+* ''0.9.0'' -- first beta release for more general testing.

@@ -19,7 +19,7 @@ module-type: filteroperator
  *
  * [rendertext[]] renders each title's text field into plain text.
  *
- * [rendertext:field[]] renders each title's field "field" into plain text.
+ * [rendertext:F[]] renders each title's field "F" into plain text.
  *
  * The parameters to the operator function are as follows:
  *

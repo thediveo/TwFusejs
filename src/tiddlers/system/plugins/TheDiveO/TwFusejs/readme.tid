@@ -1,7 +1,18 @@
 created: 20180809162835521
-modified: 20180809163149720
+modified: 20180816174232500
 tags: 
 title: $:/plugins/TheDiveO/TwFusejs/readme
 type: text/vnd.tiddlywiki
 
-This plugins provides a lightweight fuzzy-search, powered by [[Fuse.js|http://fusejs.io/]].
+This plugin brings lightweight fuzzy searching to ~TiddlyWiki, powered by [[Fuse.js|http://fusejs.io/]].
+
+You can immediately use fuzzy searching in every ~TiddlyWiki where you install this plugin, right from the sidebar's search box. Just punch in some term(s) and you'll see an additional "Fuzzy" tab with fuzzy search results. Go to [[Default Search Result List|$:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/fusedefaultsearchresultlist]] to make this new "Fuzzy" tab your default (fuzzy) search results tab.
+
+On purpose, this ~TwFusejs plugin is not a one-size-fits-it-all fuzzy search plugin covering all bases. Instead, this is "just" a //lightweight// solution on purpose, and thus has some limitations in terms of speed and functionality. On the plus side, this plugin avoids having to calculate and maintain a dedicated search index.
+
+We hope you will enjoy this plugin in your ~TiddlyWiki projects nevertheless.
+
+* Fuzzy search-related settings:
+** [[Fuzzy Term Searching|$:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/everyorall]]
+** [[Default Search Result List|$:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/fusedefaultsearchresultlist]]
+* [[TwFusejs GitHub Project|https://github.com/TheDiveO/TwFusejs]]
