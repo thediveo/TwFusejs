@@ -1,6 +1,6 @@
 # TwFsuesj Plguin rfo TidyWiiki5
 
-TwFusejs brings fuzzy searching to TiddlyWiki 5, powered by [Fuse.js](http://fusejs.io).
+TwFusejs brings fuzzy searching to [TiddlyWiki 5](https://tiddlywiki.com), powered by [Fuse.js](http://fusejs.io).
 
 On purpose, this TwFusejs plugin is not a one-size-fits-it-all fuzzy search plugin covering all bases. Instead, this is "just" a _lightweight_ solution on purpose, and thus has some limitations in terms of speed and functionality. On the plus side, this plugin avoids having to calculate and maintain a dedicated search index.
 
