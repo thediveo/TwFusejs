@@ -1,5 +1,5 @@
 created: 20180809163302254
-modified: 20180815161427210
+modified: 20180816132825754
 title: TwFusejs
 type: text/vnd.tiddlywiki
 
@@ -8,8 +8,11 @@ type: text/vnd.tiddlywiki
 
 * [[Fuzzy Search]] showcase.
 * [[Usage]] examples.
+* [[Control Panel settings|$:/core/ui/ControlPanel/Settings]] related to fuzzy searching:
+** [[Fuzzy Term Searching|$:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/everyorall]] -- do you want to search for //all// or //any// of your search terms? (defaults to //all//)
+** [[Default Search Result List|$:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/fusedefaultsearchresultlist]] -- when you use TiddlyWiki's sidebar search: do you want to see the fuzzy search results list per default, or the standard list?
 
-!! The `fuse` filter operator
+!! At a Glance: `fuse` Fuzzy Search Filter Operator
 
 |!purpose |filter the input by fuzzily searching tiddler content|
 |!input |a [[selection of titles|https://tiddlywiki.com/#Title%20Selection]] |

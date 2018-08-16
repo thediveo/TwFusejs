@@ -1,0 +1,14 @@
+caption: Default Search Result List
+created: 20180816123006775
+modified: 20180816125741864
+tags: $:/tags/ControlPanel/Settings
+title: $:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/fusedefaultsearchresultlist
+type: text/vnd.tiddlywiki
+
+Choose the default search result list to be opened automatically:
+
+<$select tiddler="$:/config/SearchResults/Default">
+  <$list filter="[all[tiddlers+shadows]tag[$:/tags/SearchResults]]">
+    <option value=<<currentTiddler>> >{{!!caption}}</option>
+  </$list>
+</$select>

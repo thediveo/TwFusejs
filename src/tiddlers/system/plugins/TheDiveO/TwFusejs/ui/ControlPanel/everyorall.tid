@@ -1,0 +1,16 @@
+caption: Fuzzy Term Searching
+created: 20180816111158550
+modified: 20180816124903959
+tags: $:/tags/ControlPanel/Settings
+title: $:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/everyorall
+type: text/vnd.tiddlywiki
+
+<$set name="cfgtiddler" value="$:/config/TwFusejs/allterms">
+
+<$link to=<<cfgtiddler>> >You can either search for //any// or //all// of your search terms:</$link>
+
+<$select tiddler=<<cfgtiddler>> default="">
+<option value="">All</option>
+<option value="!">Any</option>
+</$select>
+</$set>

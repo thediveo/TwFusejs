@@ -156,10 +156,11 @@ exports.fuse = function(source, operator, options) {
 	}
 
 	// Ready to search!
-	// console.log("Fuse.js search for:", "'"+operator.operand.trim()+"'");
+	var search_terms = operator.operand.trim();
+	// console.log("Fuse.js search for:", "'"+search+"'");
 	// console.log("Fuse.js options:", fuse_options);
 	var fuse = new Fuse(tiddlers, fuse_options);
-	var hits = fuse.search(operator.operand.trim());
+	var hits = search_terms ? fuse.search(search_terms) : [];
 
 	// In case the fuse options cause hit objects instead of simple hit
 	// strings to be returned, then only return the (hit) item; this should

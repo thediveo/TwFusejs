@@ -1,0 +1,22 @@
+created: 20180816115946548
+modified: 20180816121154728
+tags: $:/tags/Stylesheet
+title: $:/plugins/TheDiveO/TwFusejs/styles/fusesearch.css
+type: text/css
+
+div.fuse-results-count::after {
+  content: "...";
+}
+
+div.fuse-results-count + dl.fuse-results {
+  margin-top: 0;
+}
+
+dl.fuse-results dd {
+  font-size: 90%;
+  font-style: italic;
+}
+
+dl.fuse-results dd + dt {
+  margin-top: 1ex;
+}
