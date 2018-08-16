@@ -1,6 +1,6 @@
 created: 20180811161220722
-modified: 20180816121621666
-tags:
+modified: 20180816171858922
+tags: 
 title: $:/plugins/TheDiveO/TwFusejs/templates/fusesearch
 type: text/vnd.tiddlywiki
 
@@ -26,7 +26,7 @@ type: text/vnd.tiddlywiki
         </dt>
         <dd>
           <!-- render the (beginning) of a matching tiddler as pure text without any markup -->
-          <$list filter="[<hit>get[text]stringlimit[300]]">
+          <$list filter="[<hit>rendertext[]stringlimit[300]]">
             <$view field="title" format="plainwikified"/>
           </$list>
         </dd>
