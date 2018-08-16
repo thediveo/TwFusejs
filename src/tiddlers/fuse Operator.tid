@@ -1,0 +1,18 @@
+created: 20180816163201214
+modified: 20180816164300532
+tags: 
+title: fuse Operator
+type: text/vnd.tiddlywiki
+
+{{fuse Operator Parameters}}
+
+The output is a list of titles whose contents fuzzily match the `T` search terms, sorted by relevance (score).
+
+Whether a fuzzy match of at least one or all search terms is required, depends on `!`:
+
+* `fuse` requires all terms to (fuzzily) match,
+* `!fuse` requires only at least one term to (fuzzily) match.
+
+When the search terms `T` are empty, they will match no titles and thus the output will be empty, regardless of the input. This avoids unintended matching.
+
+[[Examples|fuse Operator (Examples)]]

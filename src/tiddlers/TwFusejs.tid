@@ -1,26 +1,33 @@
 created: 20180809163302254
-modified: 20180816132825754
+modified: 20180816165251249
 title: TwFusejs
 type: text/vnd.tiddlywiki
 
 |borderless plain|k
 |{{$:/plugins/TheDiveO/TwFusejs/icon}}|The ''~TwFusejs'' plugin brings fuzzy searching to your ~TiddlyWikis, powered by [[Fuse.js|http://fusejs.io]]. Fuse.js is a lightweight Javascript library without any dependencies on other libraries.|
 
-* [[Fuzzy Search]] showcase.
-* [[Usage]] examples.
-* [[Control Panel settings|$:/core/ui/ControlPanel/Settings]] related to fuzzy searching:
-** [[Fuzzy Term Searching|$:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/everyorall]] -- do you want to search for //all// or //any// of your search terms? (defaults to //all//)
-** [[Default Search Result List|$:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/fusedefaultsearchresultlist]] -- when you use TiddlyWiki's sidebar search: do you want to see the fuzzy search results list per default, or the standard list?
+! Fuzzy Search Showcase
 
-!! At a Glance: `fuse` Fuzzy Search Filter Operator
+{{Fuzzy Search}}
 
-|!purpose |filter the input by fuzzily searching tiddler content|
-|!input |a [[selection of titles|https://tiddlywiki.com/#Title%20Selection]] |
-|!suffix |`V` = optionally, the name of a variable which either contains the search options in JSON format, or contains the title of a JSON data tiddler with the search options |
-|!parameter |one or more search terms, separated by spaces |
-|!output |those input tiddlers in which ''all'' of the search terms can be found |
-|!`!` output |those input tiddlers in which ''at least one'' of the search terms can be found |
+! Fuzzy Sidebar Searches
 
-!! Demo/Development Wiki Information
+This plugin adds fuzzy searches to ~TiddlyWiki's sidebar search: an additional "Fuzzy" search result tab will automatically appear as you enter search terms into the sidebar search box.
+
+! Fuzzy Sidebar Search Settings
+
+You can make the "Fuzzy" search tab your default result tab. And you can configure whether you want searches to match //all// terms, or just //any// of your search terms.
+
+These are the [[Control Panel settings|$:/core/ui/ControlPanel/Settings]] related to fuzzy searching:
+
+* [[Fuzzy Term Searching|$:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/everyorall]] -- do you want to search for //all// or //any// of your search terms? (defaults to //all//)
+
+* [[Default Search Result List|$:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/fusedefaultsearchresultlist]] -- when you use TiddlyWiki's sidebar search: do you want to see the fuzzy search results list per default, or the standard list?
+
+! At a Glance: `fuse` Fuzzy Search Filter Operator
+
+{{fuse Operator}}
+
+! Demo/Development Wiki Information
 
 This is the ''~TwFusejs'' plugin version "<$view tiddler="$:/plugins/TheDiveO/TwFusejs" field="version" />" (<$list filter="[[$:/plugins/TheDiveO/TwFusejs/readme]is[shadow]]" emptyMessage="<span style='color: #c00; font-weight: bold'>development</span>">release</$list> wiki).

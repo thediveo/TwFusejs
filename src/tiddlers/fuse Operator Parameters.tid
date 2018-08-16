@@ -1,0 +1,12 @@
+created: 20180816163028482
+modified: 20180816163353113
+tags: 
+title: fuse Operator Parameters
+type: text/vnd.tiddlywiki
+
+|!purpose |filter the input by fuzzily searching tiddler content|
+|!input |a [[selection of titles|https://tiddlywiki.com/#Title%20Selection]] |
+|!suffix |`V` = optionally, the name of a variable which either contains the search options in JSON format, or contains the title of a JSON data tiddler with the search options |
+|!parameter |`T` = one or more search terms, separated by spaces |
+|!output |those input tiddlers in which ''all'' of the search terms can be found |
+|!`!` output |those input tiddlers in which ''at least one'' of the search terms can be found |
