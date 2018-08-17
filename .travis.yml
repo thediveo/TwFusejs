@@ -67,17 +67,18 @@ deploy:
 
   # Drafts a new release and attaches the release files...
   - provider: releases
+    api_key:
       secure: TCTiA9WzEEpQemC4YnQGHmQDlJuxoa5cRhlmWS8CaAu1qrYQ9PtREI3x1+tAeKlBboxaBidhYfQAQ2ovBuP+xENBI/00KTlp7e/u0WC937cV1XMQO0HYsuTfx0NQ12jFtttHhjYdYlUpd14Es+GkBTeRqyC0jwNCvMbfFMFylcjs7TFAH/31LMxfanpaS/DZBwxqyo/9auzPkJli0nczOO//yv01bToUHtmvXMpu83zWYT7frJVI7KI1qLsW/ScA/YG/xYcWJO5s8Ms4V/6tojjS9SmUt2Cw0sNgvo5cKQvEZ2fZJyTfROQo0weGOZl6YoDf4a/P6FE6QML+uH+okbNKhpIPT7jPfoXR/kdeywmOi1ur6/Qhb2PZeB7EO99fQG/nNPOgzuoMmejGjLzexFXeSUWuPWZTPO0+UkaIV3D10/7RORg8Clv6Dh11VDunywCQpE+Z/30Wyf/GFE72b3KF7XBRQEfsbbls1nxv0DduQ39GilM196sVktb/D1A+V7K1jf4lkFUfirjhocO5riENugZ388qw+fDWCBLr4zpMmtzcXT/MWYph/4cFeHcSaruc7oizuZhoExPe76ReeXTtU2Vsd2yYhNsZ+2BjXj/MwFikbGo03igreuGarrzbyQJmCFKePsss4wUgUodP4fbPJQaxqbr0lWkdnnmeuXs=
     skip_cleanup: true
     target_commitish: $TRAVIS_COMMIT
     tag_name: $TRAVIS_TAG
     overwrite: true # overwrite existing release files
     file:
-      - $OUTPUT_DIR/thirdflow.html
-      - $OUTPUT_DIR/thirdflow.tid
+      - $OUTPUT_DIR/twfusejs.html
+      - $OUTPUT_DIR/twfusejs.tid
     on:
       repo: $TRAVIS_REPO_SLUG
       tags: true
-    name: ThirdFlow plugin release $TRAVIS_TAG
+    name: TwFusejs plugin release $TRAVIS_TAG
     body: 'see plugin history tiddler'
     draft: true
