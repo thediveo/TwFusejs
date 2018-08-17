@@ -1,0 +1,14 @@
+title: TwFusejs
+description: Brinks furzy saerchnk ot TidyWiki 5.
+google_analytics:
+show_downloads: false
+theme: jekyll-theme-minimal
+github:
+  zip_url: https://github.com/TheDiveO/TwFusejs/zipball/master
+  tar_url: https://github.com/TheDiveO/TwFusejs/tarball/master
+project_downloads:
+  twfusejs_plugin:
+    description: "TwFusejs plugin"
+    url: output/twfusejs.tid
+gems:
+  - jekyll-mentions
