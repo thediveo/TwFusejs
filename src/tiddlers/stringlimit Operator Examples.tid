@@ -1,0 +1,9 @@
+created: 20180817110225809
+modified: 20180817110620839
+tags: Example
+title: stringlimit Operator Examples
+type: text/vnd.tiddlywiki
+
+<<.operator-example 1 "[[lorem ipsum sunt]] +[stringlimit[13]]" t:"$:/templates/plain-list-item">>
+
+<<.operator-example 2 "[[lorem ipsum funt]] +[stringlimit:***[13]]" t:"$:/templates/plain-list-item">>

@@ -1,6 +1,6 @@
 caption: Fuzzy
 created: 20180816121802012
-modified: 20180816131305500
+modified: 20180817090000126
 tags: $:/tags/SearchResults
 title: $:/plugins/TheDiveO/TwFusejs/ui/fusesearchresults
 type: text/vnd.tiddlywiki
@@ -8,7 +8,7 @@ type: text/vnd.tiddlywiki
 \define fusesearchresults(anyterm)
 <$set name="fuse-options" value=<<fuse-options>> emptyValue={{$:/plugins/TheDiveO/TwFusejs/options/default!!text}} >
   <$set name="hits" filter="[!is[current]!is[system]$anyterm$fuse:fuse-options{$(searchTiddler)$}limit[20]]">
-    <$count filter="[enlist<hits>]"/> matches
+    <small>//<$count filter="[enlist<hits>]"/> matches://</small>
     <$list variable="hit" filter="[enlist<hits>]">
       <div class="tc-menu-list-item">
         <$link to=<<hit>> ><$view tiddler=<<hit>> field="title"/></$link>

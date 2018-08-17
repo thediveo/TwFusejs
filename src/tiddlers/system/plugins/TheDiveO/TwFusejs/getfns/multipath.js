@@ -29,7 +29,7 @@ exports.getFn = function (item, key) {
   var keys = key.split(",");
   var results = [];
   $tw.utils.each(keys, function(key) {
-    results.push(deep(item, key, []));
+    results.push(deep(item, key.trim(), []));
   });
   // Fuse.js expects getFn()s to return lists, erm, arrays, instead of
   // scalars.

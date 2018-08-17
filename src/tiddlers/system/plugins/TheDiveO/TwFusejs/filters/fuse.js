@@ -155,6 +155,10 @@ exports.fuse = function(source, operator, options) {
 		delete fuse_options.getFn;
 	}
 
+	// Make sure that there is an "id" option present; default to a
+	// tiddler's title.
+	fuse_options.id = fuse_options.id || "fields.title";
+
 	// Ready to search!
 	var search_terms = operator.operand.trim();
 	// console.log("Fuse.js search for:", "'"+search+"'");

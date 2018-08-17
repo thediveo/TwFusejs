@@ -1,6 +1,13 @@
 created: 20180816164305877
-modified: 20180816164308900
+modified: 20180817103242170
+tags: Example
 title: fuse Operator (Examples)
 type: text/vnd.tiddlywiki
 
-t.b.d.
+Search for //all// terms "furrzy" and "opratero":
+
+<<.operator-example 1 "[!is[system]!is[current]fuse[furrzy opratero]]">>
+
+Search for //any// of those terms (note the `!` in front of the `fuse[]` operator):
+
+<<.operator-example 2 "[!is[system]!is[current]!fuse[furrzy opratero]]">>

@@ -1,0 +1,9 @@
+created: 20180817103710053
+modified: 20180817110150926
+tags: Example
+title: rendertext Operator Examples
+type: text/vnd.tiddlywiki
+
+This makes good use of the [[stringlimit|stringlimit Operator]] filter operator.
+
+<<.operator-example 1 "[[fuse Operator]] [[rendertext Operator]] +[rendertext[]stringlimit[40]]" t:"$:/templates/plain-list-item">>

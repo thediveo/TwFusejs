@@ -1,5 +1,5 @@
 created: 20180811153340623
-modified: 20180811162625060
+modified: 20180817084225350
 tags: $:/tags/Stylesheet
 title: $:/styles/DemoWiki
 type: text/css
@@ -14,6 +14,11 @@ dl dt code {
 
 table.borderless, table.borderless td, table.borderless th {
   border: 0px solid #000 !important;
+}
+
+table.image td:first-child {
+  width: 20em;
+  max-width: 60%;
 }
 
 img.imagethumb {

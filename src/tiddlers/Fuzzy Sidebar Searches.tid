@@ -1,0 +1,16 @@
+created: 20180817084451512
+modified: 20180817084540430
+tags: 
+title: Fuzzy Sidebar Searches
+type: text/vnd.tiddlywiki
+
+|borderless image plain|k
+|[img[Fuzzy Sidebar Search Screenshot]] |^This plugin adds fuzzy searches to ~TiddlyWiki's sidebar search: an additional "Fuzzy" search result tab will automatically appear as you enter search terms into the sidebar search box. |
+
+You can make the "Fuzzy" search tab your default result tab. And you can configure whether you want searches to match //all// terms, or just //any// of your search terms.
+
+These are the [[Control Panel settings|$:/core/ui/ControlPanel/Settings]] related to fuzzy searching:
+
+* [[Fuzzy Term Searching|$:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/everyorall]] -- do you want to search for //all// or //any// of your search terms? (defaults to //all//)
+
+* [[Default Search Result List|$:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/fusedefaultsearchresultlist]] -- when you use TiddlyWiki's sidebar search: do you want to see the fuzzy search results list per default, or the standard list?

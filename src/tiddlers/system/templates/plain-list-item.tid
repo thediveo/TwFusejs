@@ -1,0 +1,9 @@
+created: 20180817104652982
+modified: 20180817104912415
+tags: 
+title: $:/templates/plain-list-item
+type: text/vnd.tiddlywiki
+
+<li>
+<$view field="title"/>
+</li>

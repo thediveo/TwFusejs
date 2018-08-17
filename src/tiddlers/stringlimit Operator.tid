@@ -1,0 +1,16 @@
+created: 20180817105852265
+modified: 20180817110531047
+tags: Operator
+title: stringlimit Operator
+type: text/vnd.tiddlywiki
+
+|!purpose |limit the length of titles |
+|!input |a [[selection of titles|https://tiddlywiki.com/#Title%20Selection]] |
+|!suffix |`E` = optionally, an suffix to append to truncated titles (defaults to `...`) |
+|!parameter |maximum length of titles, longer titles will be truncated |
+|!output |the (truncated) titles |
+|!`!` output |(//unused//) |
+
+The `stringlimit` operator is used to truncate long contents of tiddler matching a fuzzy search.
+
+[[Examples|stringlimit Operator Examples]]

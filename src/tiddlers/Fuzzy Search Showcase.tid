@@ -1,0 +1,20 @@
+created: 20180809172116576
+modified: 20180817085458454
+tags: 
+title: Fuzzy Search Showcase
+type: text/vnd.tiddlywiki
+
+search in tiddlers for:
+<span style="white-space: nowrap;">
+  <$edit-text tiddler="$:/temp/fuse-search" default="" tag="input"/>
+  <$reveal state="$:/temp/fuse-search" type="nomatch" text="">
+                      <$button class="tc-btn-invisible">
+                                          <$action-setfield $tiddler="$:/temp/fuse-search" text="" />
+                                          {{$:/core/images/close-button}}
+                      </$button>
+  </$reveal>
+</span>
+
+<$set name="fuse-search" value={{$:/temp/fuse-search!!text}}>
+{{$:/plugins/TheDiveO/TwFusejs/templates/fusesearch}}
+</$set>

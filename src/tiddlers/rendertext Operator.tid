@@ -1,0 +1,16 @@
+created: 20180817103124526
+modified: 20180817110221084
+tags: Operator
+title: rendertext Operator
+type: text/vnd.tiddlywiki
+
+|!purpose |render tiddler (field) content to plain text |
+|!input |a [[selection of titles|https://tiddlywiki.com/#Title%20Selection]] |
+|!suffix |`F` = optionally, the name of a tiddler field; defaults to `text`. |
+|!parameter |(//unused//) |
+|!output |the rendered plain text of all input titles |
+|!`!` output |(//unused//) |
+
+The `rendertext` operator is used to display not only the titles matching a fuzzy search, but also (part) of the tiddler contents. In contrast to the existing `$view` widget, this new operator comes in especially handy, when combined with the content limiting [[stringlimit|stringlimit Operator]] operator.
+
+[[Examples|stringlimit Operator Examples]]

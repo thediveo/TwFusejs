@@ -1,18 +1,26 @@
 created: 20180816163201214
-modified: 20180816164300532
-tags: 
+modified: 20180817110841253
+tags: Operator
 title: fuse Operator
 type: text/vnd.tiddlywiki
 
-{{fuse Operator Parameters}}
+|!purpose |filter the input by fuzzily searching tiddler content|
+|!input |a [[selection of titles|https://tiddlywiki.com/#Title%20Selection]] |
+|!suffix |`V` = optionally, the name of a variable which either contains [[Fuse search options|Fuse Search Options]] in JSON format, or contains the title of a JSON data tiddler with the search options |
+|!parameter |`T` = one or more search terms, separated by spaces |
+|!output |those input tiddlers in which ''all'' of the search terms can be found |
+|!`!` output |those input tiddlers in which ''at least one'' of the search terms can be found |
 
 The output is a list of titles whose contents fuzzily match the `T` search terms, sorted by relevance (score).
 
 Whether a fuzzy match of at least one or all search terms is required, depends on `!`:
 
-* `fuse` requires all terms to (fuzzily) match,
-* `!fuse` requires only at least one term to (fuzzily) match.
+* `fuse` requires ''all'' terms to (fuzzily) match,
+* `!fuse` requires only ''at least one'' term to (fuzzily) match.
 
 When the search terms `T` are empty, they will match no titles and thus the output will be empty, regardless of the input. This avoids unintended matching.
 
-[[Examples|fuse Operator (Examples)]]
+[[Examples|fuse Operator (Examples)]]<br>
+[[Fuse Search Options]]<br>
+[[rendertext Operator]]<br>
+[[stringlimit Operator]]

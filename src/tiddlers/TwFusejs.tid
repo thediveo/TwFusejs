@@ -1,33 +1,13 @@
 created: 20180809163302254
-modified: 20180816165251249
+modified: 20180817110720544
 title: TwFusejs
 type: text/vnd.tiddlywiki
 
+!! What's This?
+
 |borderless plain|k
-|{{$:/plugins/TheDiveO/TwFusejs/icon}}|The ''~TwFusejs'' plugin brings fuzzy searching to your ~TiddlyWikis, powered by [[Fuse.js|http://fusejs.io]]. Fuse.js is a lightweight Javascript library without any dependencies on other libraries.|
+|{{$:/plugins/TheDiveO/TwFusejs/icon}}|The ''~TwFusejs'' plugin brings fuzzy searching to your ~TiddlyWikis, powered by [[Fuse.js|http://fusejs.io]]. Fuse.js is a lightweight Javascript library without any dependencies on other libraries. It's a simple solution, but not a one-size-fits-it-all one. This plugin is easy to plug into existing ~TiddlyWikis: just drag it into your wiki. Larger wikis might require a heavier tool. Your mileage may vary. |
 
-! Fuzzy Search Showcase
-
-{{Fuzzy Search}}
-
-! Fuzzy Sidebar Searches
-
-This plugin adds fuzzy searches to ~TiddlyWiki's sidebar search: an additional "Fuzzy" search result tab will automatically appear as you enter search terms into the sidebar search box.
-
-! Fuzzy Sidebar Search Settings
-
-You can make the "Fuzzy" search tab your default result tab. And you can configure whether you want searches to match //all// terms, or just //any// of your search terms.
-
-These are the [[Control Panel settings|$:/core/ui/ControlPanel/Settings]] related to fuzzy searching:
-
-* [[Fuzzy Term Searching|$:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/everyorall]] -- do you want to search for //all// or //any// of your search terms? (defaults to //all//)
-
-* [[Default Search Result List|$:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/fusedefaultsearchresultlist]] -- when you use TiddlyWiki's sidebar search: do you want to see the fuzzy search results list per default, or the standard list?
-
-! At a Glance: `fuse` Fuzzy Search Filter Operator
-
-{{fuse Operator}}
-
-! Demo/Development Wiki Information
+!! Demo/Development Wiki Information
 
 This is the ''~TwFusejs'' plugin version "<$view tiddler="$:/plugins/TheDiveO/TwFusejs" field="version" />" (<$list filter="[[$:/plugins/TheDiveO/TwFusejs/readme]is[shadow]]" emptyMessage="<span style='color: #c00; font-weight: bold'>development</span>">release</$list> wiki).

@@ -1,5 +1,5 @@
 created: 20180815183410797
-modified: 20180815190659083
+modified: 20180817091505982
 tags: 
 title: $:/plugins/TheDiveO/TwFusejs/options/weighted
 type: application/json
@@ -14,6 +14,5 @@ type: application/json
     	{ "name": "fields.title", "weight": 0.1 },
         { "name": "fields.text", "weight": 0.45 },
         { "name": "fields.tags", "weight": 0.45 }
-    ],
-    "id": "fields.title"
+    ]
 }

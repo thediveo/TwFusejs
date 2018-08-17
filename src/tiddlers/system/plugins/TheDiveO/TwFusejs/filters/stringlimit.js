@@ -19,7 +19,7 @@ module-type: filteroperator
  * [stringlimit[]] limits title to the default length of 100 characters; defaults to
  *   adding a trailing ellipsis "..." when truncating a title.
  * [stringlimit[20]] truncates titles to max 20 characters.
- * [stringlimit:***] sets the ellipsis to "***" when truncating titles.
+ * [stringlimit:***[]] sets the ellipsis to "***" when truncating titles.
  *
  * The parameters to the operator function are as follows:
  *

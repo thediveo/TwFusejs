@@ -1,16 +1,36 @@
 created: 20180811153842731
-modified: 20180811161031602
+modified: 20180817101420129
 tags: 
 title: Fuse Search Options
 type: text/vnd.tiddlywiki
 
-!! Fuse Search Options
-
-The `fuse[...]` search filter operator can be tuned by specifying search options in a JSON data tiddler, we'll explain this in detail a few moments. The default search options for `fuse[...]` are to be found in this plugin's [[options/default|$:/plugins/TheDiveO/TwFusejs/options/default]] tiddler.
+The [[fuse search filter operator|Fuse Operator]] `fuse[...]` can be tuned using search options stored in JSON data tiddler. Unless explicitly specified, searches in the form of `fuse[...]` will use the default search options stored in [[$:/plugins/TheDiveO/TwFusejs/options/default]].
 
 !! Specifying Search Options
 
-In order to use your own tuned set of options, simply create a [[JSON data tiddler|https://tiddlywiki.com/#JSONTiddlers]] (say, `myfuseoptions`) and then specify its title as the `fuse` filter suffix: `fuse:myfuseoptions[...]`.
+In order to use your own tuned set of fuzzy search options:
+
+# create a [[JSON data tiddler|https://tiddlywiki.com/#JSONTiddlers]], such as `myfuseoptions`,
+# set a variable to either name the option tiddler title, or store the JSON content directly in the variable,
+# specify the variable name as the `fuse` filter suffix (the part after the `:`), such as in `fuse:searchopts[...]`.
+
+> ''NOTE:'' Unfortunately, ~TiddlyWikis filter expression syntax is rather restricted; in particular, it does not allow system tiddler titles to be used as operator suffixes. For this reason, the `fuse[]` operator works around these limitation by allowing to specify a variable (as in `fuse:variable[]`). The variable then references a JSON data tiddler, or contains the JSON data directly.
+
+For example:
+
+```tiddlywiki
+<$set name="searchopts" value="myfuseoptions">
+  <$list filter="[all[tiddlers]fuse:searchopts[furzy saechr]]"
+</$set>
+```
+
+Alternative:
+
+```tiddlywiki
+<$set name="searchopts" value={{myfuseoptions}}>
+  <$list filter="[all[tiddlers]fuse:searchopts[furzy saechr]]"
+</$set>
+```
 
 !! Search Options JSON Data Tiddlers
 
@@ -20,18 +40,6 @@ An example fuse options JSON data tiddler might look like this (the [[default se
 > ''NOTE:'' It's a good idea to set the ''content type'' of a search options tiddler to `application/json`. While not strictly necessary, it tells ~TiddlyWiki to pretty-print the JSON data structure.
 
 !! Important Options
-
-!!! List of Matching Tiddler Titles
-
-In most cases you'll probably want a `fuse[...]` search to return a list of matching tiddler titles. For this, you need to include and specify the `id` option as follows:
-
-```json
-{
-	"id": "fields.title"
-}
-```
-
-Of course, you can override the `id` setting to return a different tiddler field, such as `fields.caption` or whatever you may find useful.
 
 !!! Tiddler Fields to Include in Search
 
@@ -50,6 +58,29 @@ Unfortunately, such "unweighted" searches tend to prioritize fuzzy title matches
 	"keys": [
     	{ "name": "fields.title", "weight": 0.2 },
         { "name": "fields.text", "weight": 0.8 }
+}
+```
+
+But there's another gotcha here: at this time, Fuse.js cannot match all search tokens across different fields, but only within the same field. As band-aid, you can specify the special `multipath` getter function. It simply combines all fields you specify and searches on this single string:
+
+```json
+{
+    "keys": "fields.title,fields.text,fields.tags,fields.caption"
+	"getFn": "$:/plugins/TheDiveO/TwFusejs/getfns/multipath.js"
+}
+```
+
+For `multipath` to correctly work, you now have to list all field names as a single key, separated by ",". Individual key weights are not supported.
+
+!!! Search Results
+
+In most cases you'll probably want a `fuse[...]` search to return a list of matching tiddler //titles//. In this case, you don't need to specially configure anything, as TwFusejs assumes the `id` option to be `fields.title` unless specified otherwise.
+
+Of course, you can override this default `id` setting to return a different tiddler field, such as `fields.caption` or whatever you may find useful.
+
+```json
+{
+	"id": "fields.caption"
 }
 ```
 
