@@ -16,6 +16,6 @@ only precise hits, but also fuzzy ones.
 
 # Live Demonstration
 
-Take a <i class="fas fa-eye"></i>&nbsp;[live tour](output/demowiki.html)
+Take a <i class="fas fa-eye"></i>&nbsp;[live tour](output/twfusejs.html)
 to see how the fuzzy searching plugin works. And learn more about
 how to use it in your own TiddlyWikis.
