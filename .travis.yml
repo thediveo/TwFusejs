@@ -1,0 +1,83 @@
+# TwFusejs: Travis Continous Integration
+#
+# Testing is only done in a very simplistic manner by running a TiddlyWiki
+# under Node.js which in turns loads all stuff. If that succeeds, the test
+# is considered to be good.
+#
+# Building runs the --release command on this TiddlyWiki, which then uses
+# ThirdFlow's automated release mechnism to generate the release files.
+#
+# Deploying does three things:
+# 1. Uploading the release files to the GitHub Pages for this GitHub project.
+# 2. Publishing the package on NPM.
+# 3. Drafting a new GitHub release and attaching the release files to it.
+
+language: node_js
+node_js: 'node' # latest stable Node.js release
+
+branches:
+  only:
+    - /^\d+\.\d+\.\d+*$/
+
+env:
+  global:
+    - OUTPUT_DIR=editions/release/output
+    - GH_PAGES_DIR=gh-pages
+    - GH_PAGES_OUTPUT_DIR=$GH_PAGES_DIR/output
+
+cache:
+  directories:
+    - "node_modules"
+
+before_install:
+  # As we only want to update the release files in our GitHub Pages, we
+  # need to get the gh-pages branch first. Later, after updating the release
+  # files, the deployment will check in the complete gh-pages branch again
+  # -- including the updated release files.
+  - git clone --branch gh-pages --single-branch --depth 1 https://github.com/$TRAVIS_REPO_SLUG gh-pages
+
+script:
+  - npm test
+  - npm run release
+    # Copy release files to our GitHub Pages for this project.
+  - cp $OUTPUT_DIR/twfusejs.tid $GH_PAGES_OUTPUT_DIR
+  - cp $OUTPUT_DIR/twfusejs.html $GH_PAGES_OUTPUT_DIR
+
+deploy:
+  # Uploads new release files to GitHub pages...
+  - provider: pages
+    github-token:
+      secure: TCTiA9WzEEpQemC4YnQGHmQDlJuxoa5cRhlmWS8CaAu1qrYQ9PtREI3x1+tAeKlBboxaBidhYfQAQ2ovBuP+xENBI/00KTlp7e/u0WC937cV1XMQO0HYsuTfx0NQ12jFtttHhjYdYlUpd14Es+GkBTeRqyC0jwNCvMbfFMFylcjs7TFAH/31LMxfanpaS/DZBwxqyo/9auzPkJli0nczOO//yv01bToUHtmvXMpu83zWYT7frJVI7KI1qLsW/ScA/YG/xYcWJO5s8Ms4V/6tojjS9SmUt2Cw0sNgvo5cKQvEZ2fZJyTfROQo0weGOZl6YoDf4a/P6FE6QML+uH+okbNKhpIPT7jPfoXR/kdeywmOi1ur6/Qhb2PZeB7EO99fQG/nNPOgzuoMmejGjLzexFXeSUWuPWZTPO0+UkaIV3D10/7RORg8Clv6Dh11VDunywCQpE+Z/30Wyf/GFE72b3KF7XBRQEfsbbls1nxv0DduQ39GilM196sVktb/D1A+V7K1jf4lkFUfirjhocO5riENugZ388qw+fDWCBLr4zpMmtzcXT/MWYph/4cFeHcSaruc7oizuZhoExPe76ReeXTtU2Vsd2yYhNsZ+2BjXj/MwFikbGo03igreuGarrzbyQJmCFKePsss4wUgUodP4fbPJQaxqbr0lWkdnnmeuXs=
+    skip_cleanup: true
+    keep-history: true
+    on:
+      repo: $TRAVIS_REPO_SLUG
+      tags: true
+    local-dir: $GH_PAGES_DIR
+
+  # Publish new release on NPM registry
+  - provider: npm
+    email: thediveo@gmx.eu
+    api_key:
+      secure: CVdxgsuSvysPtix2cdSFRBVk7koBxTaSLSyDLfERMlh7E8TKE/kTTrUVNdjd4MBC4eSU9OBOpVmbUJFIXEBUq4f/yYywrg1cmEKLW4RlsA2XkpcDhIcSjD0fDarsQy4jKIazNW2qK3Tb9gXlGqRetuRpg48jCLygS+ojYRv+icw3pX0yi1xtBkWSFXZB3tW+RbwDaALSUl0dHuHCtI92UEjB2+i/Bz8VknTSHf9M9X4Ss28SFisNST4+/4uk7a4swfNYvrezvtjqUZdVrRB+smNmD1CP+r1tZUVpf9aPRTpT6vFJbSRohpU1lZeQyGXf2d5RSKG3qblqpBxtQTz5eCKB6u3WmILrYu75k10KmAN8f9NAMNDGPQdtaP39WZUoqTVgApCTl47i73P0y8RMZwPTUVplPFy+Hdv/nXVGNXJPpav2rv2Xkqh45oL4r1Hb0wDmnxb+vdgqoRjKfLklqLysslD7rnvZe1RCZ4teO/pt95SyfntuJqplG2/ijNsaUl2es9x0ZKdHNSoe8F/rGBsxUL7wKQpVOYP0GYMLQzLoJcSmBIHd+5Ph3oe7Fukrfk2S7nQR7E6J5Z/J9vp/Chw7rg/GjdCIOD+d7Lfuzh01AInqkUzu8CMrkiklX1sWGPvSa12O+qNTJFUhhqkOVjNtlk55dVKsM22tDPYYlc4=
+    skip_cleanup: true
+    on:
+      repo: $TRAVIS_REPO_SLUG
+      tags: true
+
+  # Drafts a new release and attaches the release files...
+  - provider: releases
+      secure: TCTiA9WzEEpQemC4YnQGHmQDlJuxoa5cRhlmWS8CaAu1qrYQ9PtREI3x1+tAeKlBboxaBidhYfQAQ2ovBuP+xENBI/00KTlp7e/u0WC937cV1XMQO0HYsuTfx0NQ12jFtttHhjYdYlUpd14Es+GkBTeRqyC0jwNCvMbfFMFylcjs7TFAH/31LMxfanpaS/DZBwxqyo/9auzPkJli0nczOO//yv01bToUHtmvXMpu83zWYT7frJVI7KI1qLsW/ScA/YG/xYcWJO5s8Ms4V/6tojjS9SmUt2Cw0sNgvo5cKQvEZ2fZJyTfROQo0weGOZl6YoDf4a/P6FE6QML+uH+okbNKhpIPT7jPfoXR/kdeywmOi1ur6/Qhb2PZeB7EO99fQG/nNPOgzuoMmejGjLzexFXeSUWuPWZTPO0+UkaIV3D10/7RORg8Clv6Dh11VDunywCQpE+Z/30Wyf/GFE72b3KF7XBRQEfsbbls1nxv0DduQ39GilM196sVktb/D1A+V7K1jf4lkFUfirjhocO5riENugZ388qw+fDWCBLr4zpMmtzcXT/MWYph/4cFeHcSaruc7oizuZhoExPe76ReeXTtU2Vsd2yYhNsZ+2BjXj/MwFikbGo03igreuGarrzbyQJmCFKePsss4wUgUodP4fbPJQaxqbr0lWkdnnmeuXs=
+    skip_cleanup: true
+    target_commitish: $TRAVIS_COMMIT
+    tag_name: $TRAVIS_TAG
+    overwrite: true # overwrite existing release files
+    file:
+      - $OUTPUT_DIR/thirdflow.html
+      - $OUTPUT_DIR/thirdflow.tid
+    on:
+      repo: $TRAVIS_REPO_SLUG
+      tags: true
+    name: ThirdFlow plugin release $TRAVIS_TAG
+    body: 'see plugin history tiddler'
+    draft: true

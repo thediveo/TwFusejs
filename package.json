@@ -11,7 +11,9 @@
     "tiddlywiki5",
     "wiki",
     "plugin",
-    "Fuse.js"
+    "Fuse.js",
+    "fuzzy",
+    "searching"
   ],
   "repository": {
     "type": "git",
