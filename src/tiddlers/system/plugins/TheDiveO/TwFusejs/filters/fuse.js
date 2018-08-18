@@ -21,7 +21,7 @@ var FUSE_OPTS_DEFAULT = "/options/default";
 // as the module id(entifier).
 var PLUGIN = module.id.split("/").slice(0, 4).join("/");
 
-var Fuse = require(PLUGIN + "/libs/fuse.js");
+var Fuse = require("../libs/fuse.js");
 
 /* The "fuse" filter operator, powered by Fuse.js.
  *

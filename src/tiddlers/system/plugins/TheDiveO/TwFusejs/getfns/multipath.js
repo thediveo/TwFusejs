@@ -12,13 +12,7 @@ module-type: library
 /*global $tw: false */
 "use strict";
 
-// Locate the plugin title, so we can later easily access our plugin tiddlers
-// without having to repeat the plugin title root/stem over and over again.
-// Thanks to the CommonJS definitions, we have access to this tiddlers title
-// as the module id(entifier).
-var PLUGIN = module.id.split("/").slice(0, 4).join("/");
-
-var deep = require(PLUGIN + "/libs/deep.js").deep;
+var deep = require("../libs/deep.js").deep;
 
 /* Export a Fuse.js getFn function that interprets the key/path not as a single
  * attribute name, but instead as a list of names/keys/paths, separated by ",".
