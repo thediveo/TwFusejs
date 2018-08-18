@@ -1,8 +1,11 @@
 created: 20180809162835518
-modified: 20180818163122208
+modified: 20180818165138360
 tags: 
 title: $:/plugins/TheDiveO/TwFusejs/history
 type: text/vnd.tiddlywiki
 
-* ''0.9.1'' -- internal code cleanup.
+* ''0.9.1''
+** require better fuzzy matching by lowering(!) the threshold option.
+** internal code cleanup.
+
 * ''0.9.0'' -- first beta release for more general testing.
