@@ -1,5 +1,5 @@
 created: 20180815183410797
-modified: 20180817091505982
+modified: 20180818165150453
 tags: 
 title: $:/plugins/TheDiveO/TwFusejs/options/weighted
 type: application/json
@@ -8,7 +8,7 @@ type: application/json
 	"tokenize": true,
     "shouldSort": true,
 	"minMatchCharLength": 3,
-    "threshold": 0.5,
+    "threshold": 0.35,
     "distance": 1000,
 	"keys": [
     	{ "name": "fields.title", "weight": 0.1 },

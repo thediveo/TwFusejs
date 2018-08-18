@@ -1,5 +1,5 @@
 created: 20180809170111776
-modified: 20180817091456178
+modified: 20180818164951057
 tags: 
 title: $:/plugins/TheDiveO/TwFusejs/options/default
 type: application/json
@@ -8,7 +8,7 @@ type: application/json
 	"tokenize": true,
     "shouldSort": true,
 	"minMatchCharLength": 3,
-    "threshold": 0.5,
+    "threshold": 0.35,
     "distance": 1000,
 	"keys": [ "fields.text,fields.title,fields.tags" ],
     "getFn": "$:/plugins/TheDiveO/TwFusejs/getfns/multipath.js"
