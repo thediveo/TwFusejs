@@ -69,7 +69,9 @@ exports.fuse = function(source, operator, options) {
 	// for Fuse.js to work on.
 	var tiddlers = [];
 	source(function(tiddler, title) {
-	    tiddlers.push(tiddler);
+		if (!!tiddler) {
+			tiddlers.push(tiddler);
+		}
 	});
 
 	// Prepare the Fuse.js search options: there are basically three different
@@ -174,7 +176,7 @@ exports.fuse = function(source, operator, options) {
 		if (typeof(hit) === "string")  {
 			result.push(hit);
 		} else {
-			result.push(hit.item);
+			result.push(hit.item.fields.title);
 		}
 	})
 	return result;

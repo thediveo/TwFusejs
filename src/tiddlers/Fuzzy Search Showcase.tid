@@ -1,5 +1,5 @@
 created: 20180809172116576
-modified: 20200718204709335
+modified: 20200718211328768
 tags: 
 title: Fuzzy Search Showcase
 type: text/vnd.tiddlywiki
@@ -19,7 +19,7 @@ search in tiddlers for:
 
 <$set name="fuse-search" value={{$:/temp/fuse-search!!text}}>
 <$setjson name="fuse-options" json={{$:/plugins/TheDiveO/TwFusejs/options/default!!text}} field="useExtendedSearch" default={{$:/temp/fuse-extended-search!!text}} type="bool" >
-<$text text=<<fuse-options>>/>
+<!-- $text text=<<fuse-options>> /-->
 
 {{$:/plugins/TheDiveO/TwFusejs/templates/fusesearch}}
 </$setjson>

@@ -46,7 +46,7 @@ exports.rendertext = function(source, operator, options) {
 	var results = [];
 	source(function(tiddler, title) {
 		if (!!tiddler) {
-			console.log("render tiddler:", tiddler);
+			//console.log("render tiddler:", tiddler);
 			var text = options.wiki.renderText(
 				"text/plain",
 				tiddler.fields.type || "text/vnd.tiddlywiki",
