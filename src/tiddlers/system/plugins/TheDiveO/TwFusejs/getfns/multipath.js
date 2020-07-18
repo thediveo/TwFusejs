@@ -20,7 +20,7 @@ var deep = require("../libs/deep.js").deep;
  * the values separated by plain spaces " ".
  */
 exports.getFn = function (item, key) {
-  var keys = key.split(",");
+  var keys = key; //key.split(",");
   var results = [];
   $tw.utils.each(keys, function(key) {
     results.push(deep(item, key.trim(), []));

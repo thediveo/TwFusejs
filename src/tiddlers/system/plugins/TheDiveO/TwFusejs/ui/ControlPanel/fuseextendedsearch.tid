@@ -1,0 +1,13 @@
+caption: Fuzzy Term Extended Searching Syntax
+created: 20200718130202274
+modified: 20200718130857944
+tags: $:/tags/ControlPanel/Settings
+title: $:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/fuseextendedsearch
+type: text/vnd.tiddlywiki
+
+<$set name="cfgtiddler" value="$:/config/TwFusejs/extendedsearch">
+
+<$checkbox tiddler=<<cfgtiddler>> default="false" checked="true" unchecked="false" field="text">
+	<$link to=<<cfgtiddler>> >Extended search syntax</$link>, see [[fusejs.io extended search examples|https://fusejs.io/examples.html#extended-search]].
+</$checkbox>
+</$set>
