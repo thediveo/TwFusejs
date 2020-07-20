@@ -34,8 +34,8 @@ jobs:
     - name: Create release plugin and demo wiki files
       run: npm run release
     - run: mkdir -p $GH_PAGES_OUTPUT_DIR
-    - run: cp $OUTPUT_DIR/fontawesome.tid $GH_PAGES_OUTPUT_DIR
-    - run: cp $OUTPUT_DIR/fontawesome.html $GH_PAGES_OUTPUT_DIR
+    - run: cp $OUTPUT_DIR/twfusejs.tid $GH_PAGES_OUTPUT_DIR
+    - run: cp $OUTPUT_DIR/twfusejs.html $GH_PAGES_OUTPUT_DIR
 
     - name: Publish github pages for plugin
       uses: peaceiris/actions-gh-pages@v3
@@ -57,7 +57,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.ref }}
-        release_name: TW5FontAwesome plugin release ${{ github.ref }}
+        release_name: TwFusejs plugin release ${{ github.ref }}
         body: 'see plugin history tiddler'
         draft: false
     - name: Add demo wiki artefact
@@ -66,8 +66,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ${{ env.OUTPUT_DIR }}/fontawesome.html
-        asset_name: fontawesome.html
+        asset_path: ${{ env.OUTPUT_DIR }}/twfusejs.html
+        asset_name: twfusejs.html
         asset_content_type: text/html
     - name: Add plugin artefact
       uses: actions/upload-release-asset@v1
@@ -75,6 +75,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ${{ env.OUTPUT_DIR }}/fontawesome.tid
-        asset_name: fontawesome.tid
+        asset_path: ${{ env.OUTPUT_DIR }}/twfusejs.tid
+        asset_name: twfusejs.tid
         asset_content_type: text/plain
