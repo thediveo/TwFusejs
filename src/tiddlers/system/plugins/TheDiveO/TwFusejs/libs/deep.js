@@ -64,7 +64,7 @@ function deepValues(object, path, result, leafhook) {
         deepValues(value, path, result);
       } else {
         $tw.utils.each(value, function(value) {
-          results.push(value.toString());
+          result.push(value.toString());
         })
       }
     }

@@ -1,5 +1,5 @@
 created: 20180817084451512
-modified: 20180817084540430
+modified: 20200718131225025
 tags: 
 title: Fuzzy Sidebar Searches
 type: text/vnd.tiddlywiki
@@ -14,3 +14,5 @@ These are the [[Control Panel settings|$:/core/ui/ControlPanel/Settings]] relate
 * [[Fuzzy Term Searching|$:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/everyorall]] -- do you want to search for //all// or //any// of your search terms? (defaults to //all//)
 
 * [[Default Search Result List|$:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/fusedefaultsearchresultlist]] -- when you use TiddlyWiki's sidebar search: do you want to see the fuzzy search results list per default, or the standard list?
+
+* [[Extended Search Syntax|$:/plugins/TheDiveO/TwFusejs/ui/ControlPanel/fuseextendedsearch]] -- fine tune your searches using funny symbols; for details, please refer to [[Fuse.js extended search|https://fusejs.io/examples.html#weighted-search]].

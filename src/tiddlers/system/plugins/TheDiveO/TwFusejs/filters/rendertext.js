@@ -45,16 +45,18 @@ exports.rendertext = function(source, operator, options) {
 	var field = operator.suffix || "text";
 	var results = [];
 	source(function(tiddler, title) {
-		console.log("render tiddler:", tiddler);
-		var text = options.wiki.renderText(
-			"text/plain",
-			tiddler.fields.type || "text/vnd.tiddlywiki",
-		  tiddler.fields[field],
-			{
-				parseAsInline: false,
-				parentWidget: options.widget
-			});
-		results.push(text);
+		if (!!tiddler) {
+			//console.log("render tiddler:", tiddler);
+			var text = options.wiki.renderText(
+				"text/plain",
+				tiddler.fields.type || "text/vnd.tiddlywiki",
+			tiddler.fields[field],
+				{
+					parseAsInline: false,
+					parentWidget: options.widget
+				});
+			results.push(text);
+		}
 	});
 	return results;
 };

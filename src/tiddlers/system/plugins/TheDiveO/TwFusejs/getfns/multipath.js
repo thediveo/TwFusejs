@@ -19,8 +19,12 @@ var deep = require("../libs/deep.js").deep;
  * The resulting values are then banged together into one single string, with
  * the values separated by plain spaces " ".
  */
-exports.getFn = function (item, key) {
-  var keys = key.split(",");
+exports.getFn = function (item, splitkey) {
+  // Newer major versions of fuse.js now pass the key path as individual
+  // components split at "." boundaries. We now reverse this good intention
+  // without real value in order to correctly split into separate keys instead
+  // of key components.
+  var keys = splitkey.join(".").split(",")
   var results = [];
   $tw.utils.each(keys, function(key) {
     results.push(deep(item, key.trim(), []));

@@ -1,5 +1,5 @@
 created: 20180809172116576
-modified: 20180817085458454
+modified: 20200718211328768
 tags: 
 title: Fuzzy Search Showcase
 type: text/vnd.tiddlywiki
@@ -8,13 +8,19 @@ search in tiddlers for:
 <span style="white-space: nowrap;">
   <$edit-text tiddler="$:/temp/fuse-search" default="" tag="input"/>
   <$reveal state="$:/temp/fuse-search" type="nomatch" text="">
-                      <$button class="tc-btn-invisible">
-                                          <$action-setfield $tiddler="$:/temp/fuse-search" text="" />
-                                          {{$:/core/images/close-button}}
-                      </$button>
+		<$button class="tc-btn-invisible">
+			<$action-setfield $tiddler="$:/temp/fuse-search" text="" />
+			{{$:/core/images/close-button}}
+		</$button>
   </$reveal>
 </span>
 
+<$checkbox tiddler="$:/temp/fuse-extended-search" field="text" checked="true" unchecked="false" default="false">&nbsp;[[extended search syntax|https://fusejs.io/examples.html#extended-search]] (=exactly, !exactly not, 'includes, ^starts, ends$)</$checkbox>
+
 <$set name="fuse-search" value={{$:/temp/fuse-search!!text}}>
+<$setjson name="fuse-options" json={{$:/plugins/TheDiveO/TwFusejs/options/default!!text}} field="useExtendedSearch" default={{$:/temp/fuse-extended-search!!text}} type="bool" >
+<!-- $text text=<<fuse-options>> /-->
+
 {{$:/plugins/TheDiveO/TwFusejs/templates/fusesearch}}
+</$setjson>
 </$set>

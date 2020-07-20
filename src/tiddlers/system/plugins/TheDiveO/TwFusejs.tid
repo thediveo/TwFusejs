@@ -3,12 +3,12 @@ core-version: >=5.1.12
 created: 20180809162746002
 description: Fuse.js plugin for TiddlyWiki5
 list: readme license history
-modified: 20180818163053233
+modified: 20200720190210294
 plugin-type: plugin
 source: https://github.com/TheDiveO/TwFusejs
 tags: 
 title: $:/plugins/TheDiveO/TwFusejs
 type: application/json
-version: 0.9.1
+version: 0.9.3
 
 {"tiddlers": {}}

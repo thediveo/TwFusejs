@@ -1,8 +1,16 @@
 created: 20180809162835518
-modified: 20180818165138360
+modified: 20200720190438195
 tags: 
 title: $:/plugins/TheDiveO/TwFusejs/history
 type: text/vnd.tiddlywiki
+
+* ''0.9.3''
+** updates to now major fuse.js version 6.4.0.
+** adds support for [[fuse.js' extended search syntax|https://fusejs.io/examples.html#extended-search]].
+
+* ''0.9.2''
+** updates to fuse.js version 3.6.1.
+** fixes broken `codemirror-fullscreen-editing` plugin references in editions `tiddlywiki.info` files.
 
 * ''0.9.1''
 ** require better fuzzy matching by lowering(!) the threshold option.
