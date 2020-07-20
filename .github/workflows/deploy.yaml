@@ -31,8 +31,6 @@ jobs:
     - name: Install node module dependencies
       run: npm install
 
-    - name: Update tiddlers
-      run: npm run update force
     - name: Create release plugin and demo wiki files
       run: npm run release
     - run: mkdir -p $GH_PAGES_OUTPUT_DIR
