@@ -1,5 +1,5 @@
 created: 20180811153842731
-modified: 20180817101420129
+modified: 20200720185024979
 tags: 
 title: Fuse Search Options
 type: text/vnd.tiddlywiki
@@ -75,6 +75,8 @@ For `multipath` to correctly work, you now have to list all field names as a sin
 !!! Search Results
 
 In most cases you'll probably want a `fuse[...]` search to return a list of matching tiddler //titles//. In this case, you don't need to specially configure anything, as TwFusejs assumes the `id` option to be `fields.title` unless specified otherwise.
+
+> **Note:** TwFusejs now emulates the `id` search option itself, after newer Fuse.js implementations having removed it from its own code base.
 
 Of course, you can override this default `id` setting to return a different tiddler field, such as `fields.caption` or whatever you may find useful.
 
