@@ -1,0 +1,82 @@
+name: Deploy TwFusejs
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    env:
+      OUTPUT_DIR: editions/release/output
+      GH_PAGES_DIR: gh-pages
+      GH_PAGES_OUTPUT_DIR: $GH_PAGES_DIR/output
+    steps:
+    - name: Checking out repo master branch
+      uses: actions/checkout@v2
+    - name: Checking out github pages branch
+      uses: actions/checkout@v2
+      with:
+        repository: thediveo/TwFusejs
+        ref: gh-pages
+        fetch-depth: 1
+        path: $GH_PAGES_DIR
+    - name: Installs Node.js
+      uses: actions/setup-node@v2-beta
+      with:
+        node-version: '12'
+        registry-url: 'https://registry.npmjs.org'
+    - name: Install node module dependencies
+      run: npm install
+
+    - name: Update tiddlers
+      run: npm run update force
+    - name: Create release plugin and demo wiki files
+      run: npm run release
+    - run: mkdir -p $GH_PAGES_OUTPUT_DIR
+    - run: cp $OUTPUT_DIR/fontawesome.tid $GH_PAGES_OUTPUT_DIR
+    - run: cp $OUTPUT_DIR/fontawesome.html $GH_PAGES_OUTPUT_DIR
+
+    - name: Publish github pages for plugin
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: $GH_PAGES_DIR
+        publish_branch: gh-pages
+        keep_files: true
+
+    - name: Publish npm package
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: Create new release (draft)
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: TW5FontAwesome plugin release ${{ github.ref }}
+        body: 'see plugin history tiddler'
+        draft: false
+    - name: Add demo wiki artefact
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ env.OUTPUT_DIR }}/fontawesome.html
+        asset_name: fontawesome.html
+        asset_content_type: text/html
+    - name: Add plugin artefact
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ env.OUTPUT_DIR }}/fontawesome.tid
+        asset_name: fontawesome.tid
+        asset_content_type: text/plain
