@@ -22,6 +22,7 @@ var FUSE_OPTS_DEFAULT = "/options/default";
 var PLUGIN = module.id.split("/").slice(0, 4).join("/");
 
 var Fuse = require("../libs/fuse.js");
+var Deep = require("../libs/deep.js");
 
 /* The "fuse" filter operator, powered by Fuse.js.
  *
@@ -157,9 +158,11 @@ exports.fuse = function(source, operator, options) {
 		delete fuse_options.getFn;
 	}
 
-	// Make sure that there is an "id" option present; default to a
-	// tiddler's title.
-	fuse_options.id = fuse_options.id || "fields.title";
+	// Nota bene: the "id" option is gone as of Fuse.js 5.0.1 (5.0.2?) Yeah,
+	// great idea to introduce breaking changes within a major version. So
+	// we're going to emulate it from now on; but still support it in the
+	// search options configuration tiddlers.
+	var idfield = fuse_options.id || "fields.title";
 
 	// Ready to search!
 	var search_terms = operator.operand.trim();
@@ -176,7 +179,10 @@ exports.fuse = function(source, operator, options) {
 		if (typeof(hit) === "string")  {
 			result.push(hit);
 		} else {
-			result.push(hit.item.fields.title);
+			// If we got back an item object, with newer Fuse.js releases we
+			// now have to look up the wanted identifying ("id") field
+			// ourselves.
+			result.push(Deep.deep(hit.item, idfield, [])[0]);
 		}
 	})
 	return result;
