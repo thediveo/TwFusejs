@@ -60,8 +60,8 @@ var deepValues = function(object, path, result) {
  * to all object attributes (on this level). Otherwise, it works like the
  * Fuse.js-builtin deepValue getFn.
  */
-exports.getFn = function (item, key) {
-  var result = deepValues(item, key, []);
+exports.getFn = function (item, splitkey) {
+  var result = deepValues(item, key.join("."), []);
 	return result;
 };
 
